@@ -4,9 +4,9 @@ echo Auto EaglerXBungee - Colbster937 2025
 
 echo Installing required packages
 if command -v "apt" > /dev/null 2>&1; then
-    apt install curl wget unzip docker.io docker-compose jq yq -y
+    apt install curl wget unzip docker.io docker-compose jq yq screen -y
 elif command -v "brew" > /dev/null 2>&1; then
-    PKGS="curl wget unzip docker docker-compose jq yq"
+    PKGS="curl wget unzip docker docker-compose jq yq screen"
     for PKG in $PKGS; do
         if ! brew list "$PKG" &>/dev/null; then
             brew install "$PKG"
