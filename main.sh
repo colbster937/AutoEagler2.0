@@ -108,20 +108,20 @@ else
     BACKEND_IP=$(cat backend.txt)
 fi
 
-yq -i ".servers.lobby.address = \"$BACKEND_IP\"" config.yml
+yq -i -y ".servers.lobby.address = \"$BACKEND_IP\"" config.yml
 
 echo Configuring bungeecord
-yq -i '.online_mode = false' config.yml
-yq -i '.listeners[0].host = "0.0.0.0:25565"' config.yml
-yq -i '.listeners[0].query_port = 25565' config.yml
-yq -i '.listeners[0].ping_passthrough = true' config.yml
-yq -i '.listeners[0].force_default_server = true' config.yml
-yq -i '.ip_forward = true' config.yml
+yq -i -y '.online_mode = false' config.yml
+yq -i -y '.listeners[0].host = "0.0.0.0:25565"' config.yml
+yq -i -y '.listeners[0].query_port = 25565' config.yml
+yq -i -y '.listeners[0].ping_passthrough = true' config.yml
+yq -i -y '.listeners[0].force_default_server = true' config.yml
+yq -i -y '.ip_forward = true' config.yml
 
 echo Configuring EaglerXBungee
 cd plugins/EaglercraftXBungee
-yq -i '.listener_01.forward_ip = true' listeners.yml
-yq -i '.listener_01.http_server.enabled = true' listeners.yml
+yq -i -y '.listener_01.forward_ip = true' listeners.yml
+yq -i -y -y '.listener_01.http_server.enabled = true' listeners.yml
 
 echo Downloading EaglercraftX web
 wget -q -O web.zip "https://git.eaglercraft.rip/eaglercraft/eaglercraft-builds/raw/branch/main/EaglercraftX_1.8_Web.zip" &> /dev/null
